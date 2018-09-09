@@ -75,3 +75,11 @@ class Solution(object):
         return self.answer
 
 
+
+if __name__ == "__main__":
+	 print "this is __main__"
+	 s = Solution()
+	 answers = s.addOperators("123", 6)
+	 print "answers : " , answers
+
+
