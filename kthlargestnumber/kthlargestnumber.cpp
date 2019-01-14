@@ -8,20 +8,22 @@ public:
         //while (pivotPlace != k)
         int i = 0;
         pivotPlace = placePivot(nums, lesserNumberIndex,higherNumberIndex);
+        #if 1
         while ( i < 2)
         {
             i++;
-            if(pivotPlace < k)
+            if(pivotPlace > k)
             {
                 higherNumberIndex = pivotPlace-1;
                 pivotPlace = placePivot(nums, lesserNumberIndex,higherNumberIndex);
             }
-            else if(pivotPlace > k)
+            else if(pivotPlace < k)
             {
                 lesserNumberIndex = pivotPlace+1;
                 pivotPlace = placePivot(nums, lesserNumberIndex, higherNumberIndex);
             }
         }
+        #endif
         return pivotPlace;
     }
     
@@ -34,14 +36,16 @@ public:
         cout << endl;
     }
     
-    int placePivot(vector<int>& nums, int lesserNumberIndex, int higherNumberIndex)
+    int placePivot(vector<int>& nums, int startIndex, int endIndex)
     {
         cout << "----------------------------" << endl;
-        cout << "higherNumberIndex :" << higherNumberIndex << endl;
-        cout << "lesserNumberIndex :" << lesserNumberIndex << endl;
+        cout << "startIndex :" << startIndex << endl;
+        cout << "endIndex :" << endIndex << endl;
         printNums(nums);
         
-        int pivotPos = 0;
+        int pivotPos = startIndex;
+        int lesserNumberIndex = pivotPos+1;
+        int higherNumberIndex = endIndex;
         int i = 0;
         while ((higherNumberIndex >= lesserNumberIndex))
         {
@@ -64,9 +68,9 @@ public:
                 lesserNumberIndex++;
             }
             
-            //cout << "Iteration : " << i++ << ":";
-            //printNums(nums);
-           //cout << "("<< pivotPos << ")"<< "("<< lesserNumberIndex << "," << higherNumberIndex << ")" << endl;
+            cout << "Iteration : " << i++ << ":";
+            printNums(nums);
+           cout << "("<< pivotPos << ")"<< "("<< lesserNumberIndex << "," << higherNumberIndex << ")" << endl;
         }
         
             //cout << endl << "Final : " ;
